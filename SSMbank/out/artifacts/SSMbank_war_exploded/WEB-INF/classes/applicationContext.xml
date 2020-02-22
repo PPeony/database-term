@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+					http://www.springframework.org/schema/beans
+					http://www.springframework.org/schema/beans/spring-beans.xsd
+					http://www.springframework.org/schema/aop
+					http://www.springframework.org/schema/aop/spring-aop.xsd
+					http://www.springframework.org/schema/tx
+					http://www.springframework.org/schema/tx/spring-tx.xsd
+					http://www.springframework.org/schema/mvc
+					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+					http://www.springframework.org/schema/context
+					http://www.springframework.org/schema/context/spring-context.xsd
+		">
+
+    <!--开启注解扫描  告知spring 没有bean 对象扫描都需要找类-->
+    <context:component-scan base-package="controller"></context:component-scan>
+    <context:component-scan base-package="service"></context:component-scan>
+    <context:component-scan base-package="dao"></context:component-scan>
+
+    <!--开启注解驱动  请求真实类之间关系处理 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!--配置SqlSession相关的操作-->
+    <!--1.配置数据源(创建连接 原生 连接池 外部)-->
+    <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/bank?serverTimezone=CST&amp;useSSL=false"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="18842332832"></property>
+    </bean>
+    <!--2.配置SqlSessionFacotry-->
+    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property><!--ref读取上面的dataSource-->
+        <property name="configLocation" value="classpath:configuration.xml"></property>
+    </bean>
+    <!--3.配置SqlSession对象-->
+    <!--3.配置Mapper对象-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="dao"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SSMbank:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/SSMbank_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SSMbank/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SSMbank" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="spring-aop-5.2.3.RELEASE-javadoc" />
+          <element id="library" level="project" name="aopalliance" />
+          <element id="library" level="project" name="mybatis-3.5.2" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.15" />
+          <element id="library" level="project" name="log4j-1.2.17" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
