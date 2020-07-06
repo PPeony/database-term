@@ -23,6 +23,6 @@
 # springFestival
  这个只是加上了前端，servlet，没有ssh框架
 # SSMBank
- 加上了ssh框架。
+ 加上了ssm框架。
 
 __后面两个的数据库结构可能变化了，具体进入src->dao里面查看各个sql语句__
